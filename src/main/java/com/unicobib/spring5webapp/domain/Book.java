@@ -9,7 +9,8 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String bookName;
+    private String title;
+    private String isbn;
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -19,17 +20,31 @@ public class Book {
 
     }
 
-    public Book(String bookName, Set<Author> authors) {
-        this.bookName = bookName;
+    public Book(String title, String isbn) {
+        this.title = title;
+        this.isbn = isbn;
+    }
+
+    public Book(String title, String isbn, Set<Author> authors) {
+        this.title = title;
+        this.isbn = isbn;
         this.authors = authors;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public Set<Author> getAuthors() {
@@ -57,7 +72,8 @@ public class Book {
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", bookName='" + bookName + '\'' +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
                 ", authors=" + authors +
                 '}';
     }
