@@ -73,7 +73,7 @@ public class Book {
         if (this == o) return true;
         if (!(o instanceof Book)) return false;
         Book book = (Book) o;
-        return id.equals(book.id);
+        return book.id.equals(id);
     }
 
     @Override
